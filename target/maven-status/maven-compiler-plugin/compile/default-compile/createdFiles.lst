@@ -1,0 +1,16 @@
+db\ConexaoDB.class
+model\entities\Categoria.class
+model\entities\Clientes.class
+model\dao\ClientesDAO.class
+model\dao\impl\ClientesJDBC.class
+view\client\Login.class
+model\dao\PedidosDAO.class
+db\DBException.class
+model\dao\impl\PedidosJDBC.class
+model\dao\impl\ProdutosJDBC.class
+model\entities\ItemPedido.class
+model\dao\DAOFactory.class
+view\client\Login$1.class
+model\dao\ProdutosDAO.class
+model\entities\Pedidos.class
+model\entities\Produtos.class

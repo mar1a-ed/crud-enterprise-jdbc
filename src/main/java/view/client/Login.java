@@ -61,12 +61,12 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(249, 249, 249)
                         .addComponent(jLcadastre_se, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addContainerGap(71, Short.MAX_VALUE)
                 .addComponent(jLlogin)
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -80,7 +80,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLcadastre_se)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addGap(137, 137, 137))
         );
 
         pack();

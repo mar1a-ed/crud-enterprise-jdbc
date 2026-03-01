@@ -20,48 +20,47 @@ public class UsuariosJDBC implements UsuariosDAO{
     }
     
     @Override
-    public Usuario validarLogin(String usuario, String senha) {
+    public Usuario validarLogin(String usuario, String senha){
         PreparedStatement st = null;
-    ResultSet rs = null;
-    try {
-        // Busca o usuário com as credenciais fornecidas
-        st = conn.prepareStatement(
-            "select * from usuarios where usuario = ? and senha = ?"
-        );
+        ResultSet rs = null;
         
-        st.setString(1, usuario);
-        st.setString(2, senha); // Lembre-se: idealmente a senha estaria em Hash
+        try{
+            st = conn.prepareStatement("select * from usuarios where usuario = ? and senha = ?");
         
-        rs = st.executeQuery();
+            st.setString(1, usuario);
+            st.setString(2, senha);
         
-        if (rs.next()) {
-            // Se encontrou, monta o objeto Usuario para levar os dados para a interface
-            Usuario user = new Usuario();
-            user.setId(rs.getInt("id"));
-            user.setUsuario(rs.getString("usuario"));
-            user.setSenha(rs.getString("senha"));
+            rs = st.executeQuery();
+        
+            if(rs.next()){
+                Usuario user = new Usuario();
+                user.setId(rs.getInt("id"));
+                user.setUsuario(rs.getString("usuario"));
+                user.setSenha(rs.getString("senha"));
 
-            return user;
-        }
-    } catch (SQLException e) {
-            try {
+                return user;
+            }
+            
+        }catch(SQLException e){
+            try{
                 throw new DBException("Erro ao validar login: " + e.getMessage());
-            } catch (DBException ex) {
+            }catch(DBException ex){
                 Logger.getLogger(UsuariosJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
-    } finally {
-            try {
+        }finally{
+            try{
                 ConexaoDB.closeResultSet(rs);
                 ConexaoDB.closeStatement(st);
-            } catch (DBException ex) {
+            }catch(DBException ex){
                 Logger.getLogger(UsuariosJDBC.class.getName()).log(Level.SEVERE, null, ex);
             }
-    }
-    return null;
+        }
+        
+        return null;
     }
 
     @Override
-    public void insert(Usuario user) {
+    public void insert(Usuario user){
         PreparedStatement ps = null;
         
         try{
